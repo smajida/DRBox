@@ -25,7 +25,7 @@ resume_training = True
 remove_old_models = False
 
 # The database file for training data. Created by data/VOC0712/create_data.sh
-train_data = "examples/Airplane/Airplane_trainval_lmdb"
+train_data = "examples/multiclass/multiclass_trainval_lmdb"
 # The database file for testing data. Created by data/VOC0712/create_data.sh
 # Specify the batch sampler.
 resize_width = 300
@@ -51,18 +51,18 @@ else:
     base_lr = 0.00004
 
 # Modify the job name if you want.
-job_name = "RBOX_{}_AIRPLANE_VGG_new".format(resize)
+job_name = "RBOX_{}_MULTICLASS_VGG_new".format(resize)
 # The name of the model. Modify it if you want.
-model_name = "RBOX_AIRPLANE_{}".format(job_name)
+model_name = "RBOX_MULTICLASS_{}".format(job_name)
 
 # Directory which stores the model .prototxt file.
-save_dir = "models/RBOX/Airplane/{}".format(job_name)
+save_dir = "models/RBOX/Muticlass/{}".format(job_name)
 # Directory which stores the snapshot of models.
-snapshot_dir = "models/RBOX/Airplane/{}".format(job_name)
+snapshot_dir = "models/RBOX/Multiclas/{}".format(job_name)
 # Directory which stores the job script and log file.
-job_dir = "jobs/RBOX/Airplane/{}".format(job_name)
+job_dir = "jobs/RBOX/Multiclass/{}".format(job_name)
 # Directory which stores the detection results.
-output_result_dir = "{}/data/Airplane/results/RBOX/{}/Main".format(os.environ['HOME'], job_name)
+output_result_dir = "{}/data/Multiclass/results/RBOX/{}/Main".format(os.environ['HOME'], job_name)
 #output_result_dir = "/var/results"
 # model definition files.
 train_net_file = "{}/train.prototxt".format(save_dir)
@@ -85,7 +85,7 @@ regress_size = True
 regress_angle = True
 
 # MultiBoxLoss parameters.
-num_classes = 2
+num_classes = 16
 share_location = True
 background_label_id=0
 train_on_diff_gt = True
@@ -158,7 +158,7 @@ clip = False
 # gpus = "0,1,2,3"
 # gpulist = gpus.split(",")
 # num_gpus = len(gpulist)
-gpus = "0,1"
+gpus = "0"
 gpulist = gpus.split(",")
 num_gpus = len(gpulist)
 #num_gpus = 0;
